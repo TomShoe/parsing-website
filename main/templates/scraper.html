@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="container h-100" style="padding-top: 20px;">
+    <form method="POST", action="{{ url_for('scraper') }}" class="form-horizontal">
+        {{ form.csrf_token }}
+        <div class="input-group mb-3">
+            {{ form.matchhistory (class_='form-control', placeholder='Match History Link') }}       
+            <div class="input-group-append">
+                <input class="btn btn-outline-secondary" type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+    {% if result %}
+    <div class="input-group">
+        {% autoescape false %}
+        <textarea class="form-control custom-control" style="resize: none; height: 700px; overflow:scroll;" name="result" id="result" wrap="off">{{ result }}</textarea>
+        {% endautoescape %}
+            <div class="input-group-append">  
+                <button class="btn btn-outline-primary" data-clipboard-target="#result" type="submit">Copy</button>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

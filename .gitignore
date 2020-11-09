@@ -140,3 +140,4 @@ venv/Scripts
 
 pyvenv.cfg
 /Include
+credentials.json
